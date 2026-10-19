@@ -718,6 +718,7 @@ app.get('/api/campaigns/:id/pledges', (req: Request, res: Response) => {
 
 app.post(
   '/api/campaigns',
+  applyRateLimit(WRITE_RATE_LIMIT_MAX_REQUESTS),
   validateBody(createCampaignPayloadSchema),
   async (req: Request, res: Response, next: express.NextFunction) => {
     try {
